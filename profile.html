@@ -1,0 +1,84 @@
+<html>
+
+    <form id = profile>
+  Age:<br>
+  <input type="text" name="firstname"><br>
+  Fun Fact:<br>
+  <input type="text" name="lastname">
+</form>
+    
+    <button onclick="bio()" id = confirm class="button"> Make a Profile </button>
+    
+    <script>
+        function bio()
+        {
+            mybio = document.getElementById("bio.value")
+        }
+    </script>
+    
+      <style>
+          #profile {
+              color: white;
+          }
+.button {
+  background-color: #0DF935;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+body { 
+    background: url(black.jpg);
+    }
+    </style>
+  
+<style>
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #f1f1f1;
+    position: absolute;
+    top: 25;
+    left: 1100;
+}
+
+li a {
+  display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+    
+}
+
+/* Change the link color on hover */
+li a:hover {
+  background-color: #555;
+  color: white;
+}
+</style>
+</head>
+<body>
+
+<ul>
+  <li><a href="index.html">Home</a></li>
+  <li><a href="part1.html">Post a Job</a></li>
+  <li><a href="look.html">Find a Job</a></li>
+  <li><a href="profile.html">Make a Profile</a></li>
+
+</ul> 
+    <script>
+    
+           function setData() {
+           var userId = document.getElementById("profile").innerHTML;
+                       var js_time = Date.now();
+            var tweetid = firebase.database().ref('username/' + userId + "/").set({tweet: "profile", time: js_time});</script>
+    
+</html>

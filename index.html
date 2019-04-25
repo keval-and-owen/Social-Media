@@ -1,0 +1,327 @@
+<html>
+<h1 id="title"> WatchPlace</h1>
+    
+<head>
+<style>
+.button {
+    position: absolute;
+    bottom: 0;
+    right: 700;
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+    .button2 {
+    position: absolute;
+    bottom: 0;
+        right: 500;
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+        .button3 {
+    position: absolute;
+    bottom: 0;
+        right: 1000;
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+  
+        body { 
+    background: url(office.jpg);
+    }
+    .w3-container {
+        position:relative;
+        top: 100;
+  border: none;
+  color: white;
+  padding: 10px 32px;
+  text-align: center;
+        background-color: black;
+        color: white;
+  display: inline-block;
+  font-size: 30px;
+  margin: 4px 2px;
+  font-family: fantasy;
+
+        
+    }
+       
+    .filter {
+        position:absolute;
+        left: 1020;
+        width: 400;
+  border: none;
+  color: white;
+  padding: 10px 32px;
+  text-align: center;
+        background-color: black;
+        color: white;
+  display: inline-block;
+  font-size: 30px;
+  margin: 4px 2px;
+  font-family: fantasy;
+
+        
+    }
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li a {
+  display: block;
+  width: 60px;
+  background-color: #dddddd;
+}
+    #title {
+          color:black;
+        font-family: sans-serif;
+        font-size: 50px;
+    
+    }
+     #id01 {
+          color:black;
+        font-family: fantasy;
+        font-size: 50px;
+         align-content: center;
+    }
+</style>
+</head>
+    
+<body>
+
+
+
+
+</body>
+
+<a href="part1.html">
+    <button onclick class="button"> Post a Job </button>
+</a>
+
+<a href="look.html">
+    <button onclick class="button2"> Find a Job </button>
+</a>
+
+    
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
+
+<div class="w3-container">
+
+  <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black">About</button>
+
+  <div id="id01" class="w3-modal">
+    <div class="w3-modal-content w3-card-4">
+      <header class="w3-container w3-teal"> 
+        <span onclick="document.getElementById('id01').style.display='none'" 
+        class="w3-button w3-display-topright">&times;</span>
+        <h2></h2>
+      </header>
+      <div class="w3-container">
+        <p>This Website was Created by Keval Ghai and Owen Anderson</p>
+        <p>Here you can post job oppurtunities so people can see them!</p>
+      </div>
+      <footer class="w3-container w3-teal">
+        <p></p>
+      </footer>
+    </div>
+  </div>
+</div>
+
+<script>
+// Get the modal
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+
+</body>
+    
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
+
+<div class="w3-container">
+
+  <button onclick="document.getElementById('id02').style.display='block'" class="w3-button w3-black">Contact</button>
+
+  <div id="id02" class="w3-modal">
+    <div class="w3-modal-content w3-card-4">
+      <header class="w3-container w3-teal"> 
+        <span onclick="document.getElementById('id02').style.display='none'" 
+        class="w3-button w3-display-topright">&times;</span>
+        <h2></h2>
+      </header>
+      <div class="w3-container">
+        <p>Email: WatchPlace@gmail.com</p>
+        <p>Phone Number: 333=333=3333</p>
+          <p>Fax: 333=333=3333</p>
+      </div>
+      <footer class="w3-container w3-teal">
+        <p></p>
+      </footer>
+    </div>
+  </div>
+</div>
+
+<script>
+// Get the modal
+var modal = document.getElementById('id02');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+
+</body>
+<body>
+
+<h2 class="w3-center" id=title></h2>
+
+<div class="w3-content w3-section" style="max-width:500px" id="slideshow">
+  <img class="mySlides" src="finance.jpg" style="width:100%">
+  <img class="mySlides" src="doctors.jpg" style="width:100%">
+  <img class="mySlides" src="coding.jpg" style="width:100%">
+  <img class="mySlides" src="engineer.jpg" style="width:100%">
+
+</div>
+
+<script>
+var myIndex = 0;
+carousel();
+
+function carousel() {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  myIndex++;
+  if (myIndex > x.length) {myIndex = 1}    
+  x[myIndex-1].style.display = "block";  
+  setTimeout(carousel, 2000); // Change image every 2 seconds
+}
+</script>
+
+</body>
+    <style>
+    
+    #slideshow {
+        position: absolute;
+        top: 170;
+        right: 430;
+    
+        }   #title {
+        
+        color:black;
+        font-family: Serif;
+        align-content: center;
+            position: absolute;
+            right: 600;
+        font-size: 60px;
+        
+    }
+    </style>
+    
+<body onload="myFunction()" style="margin:0;">
+
+<div id="loader"></div>
+
+<div style="display:none;" id="myDiv" class="animate-bottom">
+ 
+</div>
+
+<script>
+var myVar;
+
+function myFunction() {
+  myVar = setTimeout(showPage, 3000);
+}
+
+function showPage() {
+  document.getElementById("loader").style.display = "none";
+  document.getElementById("myDiv").style.display = "block";
+}
+</script>
+
+</body>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
+
+<div class="filter">
+  
+  <p>Find a job description in the input field below</p>
+
+  <input class="w3-input w3-border w3-padding" type="text" placeholder="Search for names.." id="myInput" onkeyup="myFunction()">
+  <ul class="w3-ul w3-margin-top" id="myUL">
+    <li><a href="https://hiring.monster.com/hr/hr-best-practices/recruiting-hiring-advice/job-descriptions/financial-accountant-job-description.aspx"><mark>Finance</mark></a></li>
+    <li><a href=https://www.snagajob.com/job-descriptions/engineer target="_blank"><mark>Engineer</mark></a></li>
+    <li><a href=https://www.medicalnewstoday.com/articles/323679.php target="_blank"><mark>Medicine</mark></a></li>
+    <li><a href=https://www.thebalancecareers.com/computer-programmer-job-description-salary-and-skills-2061823 target="_blank"><mark>Programming</mark></a></li>
+      <li><a href=https://www.thebalancecareers.com/lawyer-career-profile-2164294 target="_blank"><mark>Law</mark></a></li>
+    <li><a href=https://resources.workable.com/job-descriptions/education-job-descriptions target="_blank"><mark>Education</mark></a></li>
+    <li><a href=https://www.careerstructure.com/careers-advice/profiles/skilled-trades target="_blank"><mark>Trades</mark></a></li>
+  </ul>
+</div>
+
+<script>
+function myFunction() {
+  var input, filter, ul, li, a, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  ul = document.getElementById("myUL");
+  li = ul.getElementsByTagName("li");
+  for (i = 0; i < li.length; i++) {
+    txtValue = li[i].textContent || li[i].innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = "";
+    } else {
+      li[i].style.display = "none";
+    }
+  }
+}
+    
+
+</script>
+
+</body>
+
+
+</html>
