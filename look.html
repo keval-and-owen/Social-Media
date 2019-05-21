@@ -1,5 +1,86 @@
-
 <html>
+    
+    <h1 class="logo">
+  <span class="word1">The</span>
+  <span class="word2">WatchPlace</span>
+</h1>
+<p><a href="http://www.hacknightslc.com/"></a><a href="http://www.theleonardo.org/"></a> <small></small></p>
+
+    <style>
+        
+    
+    body {
+  background: #282828;/* match border color */
+  text-align: center;
+}
+a {
+  color: #dc006c;
+}
+small {
+  color: #333;
+}
+.logo {
+  font: 84px 'Arial Narrow', sans-serif;/* I picked this font because it's the closest looking 'web safe' font http://cssfontstack.com/ */
+  color: #fefefe;
+  text-transform: uppercase;
+  letter-spacing: -4px;
+}
+
+/* stuff for both words */
+.logo span {
+  position: relative;
+}
+.logo span:before,
+.logo span:after {
+  content: '';
+  position: absolute;
+  border-width: 32px;/* makes a nice, big 64px square */
+  border-style: solid;
+  border-color: transparent;
+  height: 0;
+  z-index: 10;
+}
+
+/* stuff for 1st word */
+.logo .word1 {
+  color: #dc006c;
+  margin-right: -38px;
+  transform: rotateY(180deg);/* using Prefix free */
+  display: inline-block;/* required for transform */
+  z-index: 10;/* stack 1st word on top */
+}
+.logo .word1:before {
+  right: -4px;/* would be left, but we flipped the word */
+  top: -9px;
+  border-top-color: #282828;/* match background color */
+  border-right-color: #282828;/* would be left, but we flipped the word */
+}
+.logo .word1:after {
+  left: 17px;/* would be right, but we flipped the word */
+  bottom: -15px;
+  border-bottom-color: #282828;
+  border-left-color: #282828;/* would be right, but we flipped the word */
+}
+
+/* stuff for 2nd word */
+.logo .word2 {
+  z-index: 0;/* stack 2nd word below */
+}
+.logo .word2:before {
+  left: -4px;
+  top: -6px;
+  border-top-color: #282828;
+  border-left-color: #282828;
+}
+.logo .word2:after {
+  right: -4px;  
+  bottom: 4px;
+  border-bottom-color: #282828;
+  border-right-color: #282828;
+}
+
+
+</style>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
@@ -94,19 +175,40 @@ function showPage() {
     
     </style>
     
-<hl id = "title"> WatchPlace </hl>
+<hl id = "title"> </hl>
     <br>
     
 <head>
 <style>
     #mytweets {
-    border-style: solid;
+        
+    background: orange;    
+    width: 700px;
+    border-style: 500px;
     border-width: 10px;
     border-left-width: 10px;
     border-right-width: 10px;
-    border-color: black;
-    color:azure; 
+    color:none; 
+        position: absolute;
+        bottom: 25%;
+        right: 40%;
 }
+       #pic {
+        
+    background: orange;    
+
+    color:blue; 
+    position: absolute;
+    left: 50%;
+     
+        
+}
+    #myphoto {
+        
+        position: absolute;
+right: 4%;
+    }
+
 ul {
   list-style-type: none;
   margin: 0;
@@ -141,7 +243,12 @@ li a:hover {
   <li><a href="look.html">Find a Job</a></li>
 </ul>    
     
-    <script>
+
+   
+    <script> 
+  
+    
+            
         
         //  <li><a href="profile.html">Make a Profile</a></li>
 
@@ -231,6 +338,7 @@ li a:hover {
             users = data[1]; // put on top, because changed data - not good coding change later
             data = data[0];
             
+            var count = 0;
             for (var u in data) {
                 for (var t in data[u]) {
                     mytab = mytab + "<tr>";
@@ -242,22 +350,71 @@ li a:hover {
                         mytab = mytab + "<td>" + data[u][t].tweet + "</td>";
                         mytab = mytab + "<td>" + time + "<br><img src='" + data[u][t].img + "' width='300px'></td>";
                     } else {
-                        mytab = mytab + "<td><img src='" + users[u].profile_picture + "' width='50px'></td>";
+                        mytab = mytab + "<td><img src='" + users[u].profile_picture + "' width='50px' ></td>";
                         mytab = mytab + "<td>" + users[u].email + "</td>";
                         mytab = mytab + "<td>" + data[u][t].tweet + "</td>";
                         mytab = mytab + "<td>" + time + "</td>";
+                        mytab = mytab + "<td>  <button onclick='addlike()' id='likes'>Like?</button> </td>";
+                        mytab = mytab + "<td>  <button onclick='adddislike()' id='dislikes'>Dislike?</button> </td>";
+
+                       
+                      
+                
                         
                         
                     } 
                     mytab = mytab + "</tr>";
                 }   
             }
+    
             //mylist = mylist + "</ul>";
             mytab = mytab + "</table>"
             var mytdiv = document.getElementById("mytweets");
             //mytdiv.innerHTML = mylist;
             mytdiv.innerHTML = mytab;
+      
         }
+                      //LIKE CODE          
+            var likes = document.getElementById("likes");
+
+            function addlike() {
+                firebase.database().ref('/users/' + userId).update({status:"liked"});
+                document.getElementById('likes').style.backgroundColor = 'green'
+                document.getElementById('dislikes').style.backgroundColor = 'white'
+
+
+            }
+        
+                  var dislikes = document.getElementById("dislikes");
+
+            function adddislike() {
+                firebase.database().ref('/users/' + userId).update({status:"disliked"});
+                document.getElementById('dislikes').style.backgroundColor = 'red'
+                                document.getElementById('likes').style.backgroundColor = 'white'
+
+
+
+            }
+        
+    
+    
+
+    
+//var likecount = document.getElementById("likecount");
+ //   
+   
+    //function addlike() {
+           //firebase.database().ref('/users/' + userId).update({bio: liked});
+    
+   // }
+    
+       
+
+</script>
+        
+                                              
+        <script>       
+    
         
         // write tweets to firebase
         function tweet() {
@@ -286,9 +443,7 @@ li a:hover {
                       });
                     }
                 });
-            
-            
-            
+
             // The unique key stored in tweetid is based on a timestamp, so list items will automatically be ordered chronologically. Because Firebase generates a unique key for each tweet, no write conflicts will occur if multiple users add a post at the same time. https://firebase.google.com/docs/database/admin/save-data
             
         }
@@ -309,9 +464,9 @@ li a:hover {
           function font() {
             document.getElementById("twit").style.fontFamily = "cursive"; 
         }
-s 
     
   </script>
+     
     <style>
 .signinoutbutton {
   background-color: #4CAF50;
@@ -343,16 +498,14 @@ s
         <button onclick="signin()" class="signinoutbutton">Sign in</button>
         <button onclick="signout()" class="signinoutbutton">Sign out</button>
         <button onclick= "font()" id = cursive class="signinoutbutton"> Formal Font</button>
+    
         
 
         <br>
        
         <a href="fbtest.json" target="_target"></a><br>
     
-      
-         <a href="done.html">
-        <button type="button" onclick="tweet()" class="sumbitbutton">Submit</button>
-        </a>
+    
 
     
         <br><input id="inputFileToLoad" type="file" onchange="encodeImageFileAsURL();" />
@@ -369,7 +522,7 @@ s
     
 <style> 
         body { 
-    background: url(office.jpg);
+    background: #21252b;
     }
     #button:hover {
         background-color: aqua;  
@@ -383,6 +536,23 @@ s
         position: absolute;
         right: 43%; 
     }
+         #dislikes {
+  border: none;
+  padding: 15px 32px;
+  text-decoration: underline;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}    
+     #likes {
+  border: none;
+  padding: 15px 32px;
+  text-decoration: underline;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;    }
     
     #button2:hover { 
         background-color:chartreuse;
@@ -403,4 +573,9 @@ s
 
     
 </html>
+    
+    
 
+    
+
+</html>

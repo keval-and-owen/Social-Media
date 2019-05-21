@@ -1,11 +1,149 @@
 <html>
-<h1 id="title"> WatchPlace</h1>
+ 
+    
+    <div id="inside"></div>
+    
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=ZCOOL+KuaiLe);
+body {
+  background-color: black;
+}
+
+/* <link href="https://fonts.googleapis.com/css?family=ZCOOL+KuaiLe" rel="stylesheet"> */
+
+#inside {
+  font-family: 'ZCOOL KuaiLe', cursive;
+/*   font-family: 'Dosis', sans-serif; */
+  color: rgb(252, 150, 65);
+  position: absolute;
+  z-index: 1;
+  height: 1.4em;
+  width: 3.8em;
+  overflow: show;
+  margin: auto;
+  top: 0;
+  left: 1300;
+  bottom: 600;
+  right: 1;
+
+  font-size: 2vw;
+  -webkit-text-stroke: 3px rgb(210, 65, 36);
+  text-shadow: 4px 4px 10px rgba(210, 65, 36, 0.4), 
+               4px 4px 20px rgba(210, 45, 26, 0.4), 
+               4px 4px 30px rgba(210, 25, 16, 0.4), 
+               4px 4px 40px rgba(210, 15, 06, 0.4);
+}
+    </style>
+     <h1 class="logo">
+  <span class="word1">The</span>
+  <span class="word2">WatchPlace</span>
+</h1>
+<p><a href="http://www.hacknightslc.com/"></a><a href="http://www.theleonardo.org/"></a> <small></small></p>
+<script>
+    function clock() {
+  var now = new Date();
+  var secs = ('0' + now.getSeconds()).slice(-2);
+  var mins = ('0' + now.getMinutes()).slice(-2);
+  var hr = now.getHours();
+  var Time = hr + ":" + mins + ":" + secs;
+  document.getElementById("inside").innerHTML = Time;
+  requestAnimationFrame(clock);
+}
+
+requestAnimationFrame(clock);
+    </script>
+    <style>
+    
+    body {
+  background: #282828;/* match border color */
+  text-align: center;
+}
+a {
+  color: #dc006c;
+}
+small {
+  color: #333;
+}
+.logo {
+  font: 84px 'Arial Narrow', sans-serif;/* I picked this font because it's the closest looking 'web safe' font http://cssfontstack.com/ */
+  color: #fefefe;
+  text-transform: uppercase;
+  letter-spacing: -4px;
+}
+
+/* stuff for both words */
+.logo span {
+  position: relative;
+}
+.logo span:before,
+.logo span:after {
+  content: '';
+  position: absolute;
+  border-width: 32px;/* makes a nice, big 64px square */
+  border-style: solid;
+  border-color: transparent;
+  height: 0;
+  z-index: 10;
+}
+
+/* stuff for 1st word */
+.logo .word1 {
+  color: #dc006c;
+  margin-right: -38px;
+  transform: rotateY(180deg);/* using Prefix free */
+  display: inline-block;/* required for transform */
+  z-index: 10;/* stack 1st word on top */
+}
+.logo .word1:before {
+  right: -4px;/* would be left, but we flipped the word */
+  top: -9px;
+  border-top-color: #282828;/* match background color */
+  border-right-color: #282828;/* would be left, but we flipped the word */
+}
+.logo .word1:after {
+  left: 17px;/* would be right, but we flipped the word */
+  bottom: -15px;
+  border-bottom-color: #282828;
+  border-left-color: #282828;/* would be right, but we flipped the word */
+}
+
+/* stuff for 2nd word */
+.logo .word2 {
+  z-index: 0;/* stack 2nd word below */
+}
+.logo .word2:before {
+  left: -4px;
+  top: -6px;
+  border-top-color: #282828;
+  border-left-color: #282828;
+}
+.logo .word2:after {
+  right: -4px;  
+  bottom: 4px;
+  border-bottom-color: #282828;
+  border-right-color: #282828;
+}
+
+
+
+    <script src="https://www.gstatic.com/firebasejs/5.7.3/firebase.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+ <style>
+        tr:hover {background-color: #f5f5f5;}
+        th, td {
+            border-bottom: 1px solid #ddd;
+        }
+    
+    </style>
+
+
+<h1 id="title"> </h1>
     
 <head>
 <style>
 .button {
     position: absolute;
-    bottom: 0;
+    bottom: -100;
     right: 700;
   background-color: #4CAF50;
   border: none;
@@ -20,7 +158,7 @@
 }
     .button2 {
     position: absolute;
-    bottom: 0;
+    bottom: -100;
         right: 500;
   background-color: #4CAF50;
   border: none;
@@ -50,7 +188,7 @@
 }
   
         body { 
-    background: url(office.jpg);
+    background: #21252b;;
     }
     .w3-container {
         position:relative;
@@ -101,6 +239,8 @@ li a {
           color:black;
         font-family: sans-serif;
         font-size: 50px;
+        position: static;
+        right: 50%;
     
     }
      #id01 {
@@ -108,7 +248,8 @@ li a {
         font-family: fantasy;
         font-size: 50px;
          align-content: center;
-    }
+         position: absolute;
+         bottom: 199%;   }
 </style>
 </head>
     
@@ -128,47 +269,6 @@ li a {
 </a>
 
     
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<body>
-
-<div class="w3-container">
-
-  <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black">About</button>
-
-  <div id="id01" class="w3-modal">
-    <div class="w3-modal-content w3-card-4">
-      <header class="w3-container w3-teal"> 
-        <span onclick="document.getElementById('id01').style.display='none'" 
-        class="w3-button w3-display-topright">&times;</span>
-        <h2></h2>
-      </header>
-      <div class="w3-container">
-        <p>This Website was Created by Keval Ghai and Owen Anderson</p>
-        <p>Here you can post job oppurtunities so people can see them!</p>
-      </div>
-      <footer class="w3-container w3-teal">
-        <p></p>
-      </footer>
-    </div>
-  </div>
-</div>
-
-<script>
-// Get the modal
-var modal = document.getElementById('id01');
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
-</script>
-
-</body>
-    
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <body>
@@ -180,7 +280,7 @@ window.onclick = function(event) {
   <div id="id02" class="w3-modal">
     <div class="w3-modal-content w3-card-4">
       <header class="w3-container w3-teal"> 
-        <span onclick="document.getElementById('id02').style.display='none'" 
+        <span onclick="document.getElementById('id01').style.display='none'" 
         class="w3-button w3-display-topright">&times;</span>
         <h2></h2>
       </header>
@@ -209,6 +309,10 @@ window.onclick = function(event) {
 </script>
 
 </body>
+    
+
+    
+    
 <body>
 
 <h2 class="w3-center" id=title></h2>
@@ -243,8 +347,9 @@ function carousel() {
     
     #slideshow {
         position: absolute;
-        top: 170;
+        top: 300;
         right: 430;
+        
     
         }   #title {
         
@@ -323,5 +428,36 @@ function myFunction() {
 
 </body>
 
+<html>
+       <textarea rows="3" cols="20" id="text">
+Enter your text here...
+</textarea>
+
+<style> 
+    #text {
+      position: absolute;
+        right: 80%;
+        
+    }
+    #textbutton {
+      position: absolute;
+        right: 80%;
+        bottom: 50%
+        
+    
+        
+    }
+    </style>
+     <button onclick id="textbutton" onclick='profile()' id="profiles"> Sumbit Profile </button>
+    
+    <script>
+    function profile() {
+        myprofile = document.getElementById('profiles');
+        var 
+        
+    }
+    </script>
 
 </html>
+    
+    

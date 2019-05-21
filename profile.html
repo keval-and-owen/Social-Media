@@ -1,42 +1,6 @@
 <html>
+    <script src="https://www.gstatic.com/firebasejs/5.7.3/firebase.js"></script>
 
-    <form id = profile>
-  Age:<br>
-  <input type="text" name="firstname"><br>
-  Fun Fact:<br>
-  <input type="text" name="lastname">
-</form>
-    
-    <button onclick="bio()" id = confirm class="button"> Make a Profile </button>
-    
-    <script>
-        function bio()
-        {
-            mybio = document.getElementById("bio.value")
-        }
-    </script>
-    
-      <style>
-          #profile {
-              color: white;
-          }
-.button {
-  background-color: #0DF935;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-}
-body { 
-    background: url(black.jpg);
-    }
-    </style>
-  
 <style>
 
 ul {
@@ -47,7 +11,7 @@ ul {
   background-color: #f1f1f1;
     position: absolute;
     top: 25;
-    left: 1100;
+    right: 1100;
 }
 
 li a {
@@ -74,11 +38,126 @@ li a:hover {
   <li><a href="profile.html">Make a Profile</a></li>
 
 </ul> 
-    <script>
-    
-           function setData() {
-           var userId = document.getElementById("profile").innerHTML;
-                       var js_time = Date.now();
-            var tweetid = firebase.database().ref('username/' + userId + "/").set({tweet: "profile", time: js_time});</script>
+
     
 </html>
+
+<html>
+    <head>
+    <title> Profile</title>
+        <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,700" rel="stylesheet">
+   
+<link rel="stylesheet"/>
+  </head>
+    
+    <body> 
+<div class="mainDiv" align="right"> 
+    <h1 align="left"> Profile</h1>
+    <textarea id="mainText" placeholder="Enter text here ..."></textarea>
+    
+    <button id="submitBtn" onclick="submitClick()">Submit</button>
+    </div> 
+        
+    
+       <script>      
+    
+           var config = {
+    apiKey: "AIzaSyDTGtJXWXXcAYyRDulmL3Ey6oSKe8QgTUM",
+    authDomain: "social-media-b4769.firebaseapp.com",
+    databaseURL: "https://social-media-b4769.firebaseio.com",
+    projectId: "social-media-b4769",
+    storageBucket: "social-media-b4769.appspot.com",
+    messagingSenderId: "127094797536"
+
+  };
+        firebase.initializeApp(config);  
+        
+        </script>
+
+    
+</body>
+
+</html>
+
+<script>
+    
+    
+    firebase.auth().onAuthStateChanged(function(user) {
+            if (user == null) {
+                document.getElementById("uid").innerHTML = "not logged in";
+                return;
+            } else {
+                userId = user.uid; // you can also get .displayName, .photoURL, .email
+            }
+    });
+var mainText = document.getElementById("mainText");
+var submitBtn = document.getElementById("submitBtn");
+    
+   
+    function submitClick() {
+           var messageText = mainText.value;
+           firebase.database().ref('/users/' + userId).update({bio: messageText});
+    
+    }
+    
+       
+    
+
+</script>
+<style> 
+    body {
+        background: #21252b; 
+        color: #333;
+        font-size: 14px;
+        font-family: 'Raleway'. sans-serif; 
+        padding: 0;
+        margin: 0;
+        
+    }
+    
+    input, button {
+        border: 0; 
+        padding: 10px; 
+    }
+    .mainDiv { 
+        background: #fff; 
+        padding:20px;
+        width: 450px;
+        margin: 0px auto; 
+        margin-top: 200px;
+        box-shadow: 0 0 20px #333; 
+    }
+         
+    
+    h1 { 
+    font-weight: 300;
+        font-size: 24px;
+    }
+    
+    textarea { 
+        border: 0px;
+        background: #fff;
+        padding: 20px 0px;
+        outline: none;
+        width: 100%;
+        resize: none;
+    
+    }
+    
+    button {
+        background: #528bff;
+        color: #fff;
+        position: relative;
+        top: 50px;
+        width: 64px;
+        height: 64px;   
+        line-height: 38px;
+        border-radius: 100%;
+        
+        
+    }
+
+
+
+
+</style>
