@@ -1,9 +1,20 @@
 <html>
- 
+ <a href="rate.html"><img src="star.jpg"  height = "100" align= "left"></a> 
+    <p id = "star">Click the Star to Rate Us!</p>
     
     <div id="inside"></div>
     
     <style>
+            #star {
+        color:#3D70C8;
+        font-family: sans-serif;
+        font-size: 20px;
+        position: absolute; 
+        left: 10%;
+        top: 30;
+        
+    }
+
         @import url(https://fonts.googleapis.com/css?family=ZCOOL+KuaiLe);
 body {
   background-color: black;
@@ -23,7 +34,7 @@ body {
   margin: auto;
   top: 0;
   left: 1300;
-  bottom: 600;
+  bottom: 700;
   right: 1;
 
   font-size: 2vw;
@@ -143,9 +154,9 @@ small {
 <style>
 .button {
     position: absolute;
-    bottom: -100;
+    top: 200;
     right: 700;
-  background-color: #4CAF50;
+  background-color: #3D70C8;
   border: none;
   color: white;
   padding: 15px 32px;
@@ -158,9 +169,9 @@ small {
 }
     .button2 {
     position: absolute;
-    bottom: -100;
+    top: 200;
         right: 500;
-  background-color: #4CAF50;
+  background-color: #3D70C8;
   border: none;
   color: white;
   padding: 15px 32px;
@@ -191,8 +202,9 @@ small {
     background: #21252b;;
     }
     .w3-container {
-        position:relative;
+        position:absolute;
         top: 100;
+        right: 20;
   border: none;
   color: white;
   padding: 10px 32px;
@@ -200,27 +212,28 @@ small {
         background-color: black;
         color: white;
   display: inline-block;
-  font-size: 30px;
+  font-size: 20px;
   margin: 4px 2px;
-  font-family: fantasy;
+  font-family: sans;
+        
 
         
     }
        
     .filter {
         position:absolute;
-        left: 1020;
-        width: 400;
+        left: 10;
+        width: 300;
   border: none;
   color: white;
   padding: 10px 32px;
   text-align: center;
-        background-color: black;
+        background-color: #3D70C8;
         color: white;
   display: inline-block;
-  font-size: 30px;
+  font-size: 25px;
   margin: 4px 2px;
-  font-family: fantasy;
+  font-family: sans;
 
         
     }
@@ -275,7 +288,7 @@ li a {
 
 <div class="w3-container">
 
-  <button onclick="document.getElementById('id02').style.display='block'" class="w3-button w3-black">Contact</button>
+  <button onclick="document.getElementById('id02').style.display='block'" class="w3-button w3-black">Contact Us!</button>
 
   <div id="id02" class="w3-modal">
     <div class="w3-modal-content w3-card-4">
@@ -309,6 +322,8 @@ window.onclick = function(event) {
 </script>
 
 </body>
+
+
     
 
     
@@ -396,7 +411,7 @@ function showPage() {
 
   <input class="w3-input w3-border w3-padding" type="text" placeholder="Search for names.." id="myInput" onkeyup="myFunction()">
   <ul class="w3-ul w3-margin-top" id="myUL">
-    <li><a href="https://hiring.monster.com/hr/hr-best-practices/recruiting-hiring-advice/job-descriptions/financial-accountant-job-description.aspx"><mark>Finance</mark></a></li>
+    <li><a  href="https://hiring.monster.com/hr/hr-best-practices/recruiting-hiring-advice/job-descriptions/financial-accountant-job-description.aspx" onclick= 'finance()' id='job'><mark>Finance</mark></a></li>
     <li><a href=https://www.snagajob.com/job-descriptions/engineer target="_blank"><mark>Engineer</mark></a></li>
     <li><a href=https://www.medicalnewstoday.com/articles/323679.php target="_blank"><mark>Medicine</mark></a></li>
     <li><a href=https://www.thebalancecareers.com/computer-programmer-job-description-salary-and-skills-2061823 target="_blank"><mark>Programming</mark></a></li>
@@ -407,6 +422,16 @@ function showPage() {
 </div>
 
 <script>
+    
+      //   var job = document.getElementById("job");
+
+        //    function finance() {
+          //      firebase.database().ref('/users/' + userId).update({Interest:"Finance"});
+        
+            }
+    </script>
+    <script>
+    
 function myFunction() {
   var input, filter, ul, li, a, i;
   input = document.getElementById("myInput");
@@ -429,9 +454,7 @@ function myFunction() {
 </body>
 
 <html>
-       <textarea rows="3" cols="20" id="text">
-Enter your text here...
-</textarea>
+     
 
 <style> 
     #text {
@@ -448,7 +471,6 @@ Enter your text here...
         
     }
     </style>
-     <button onclick id="textbutton" onclick='profile()' id="profiles"> Sumbit Profile </button>
     
     <script>
     function profile() {

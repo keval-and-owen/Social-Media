@@ -1,4 +1,6 @@
 <html>
+    <a href="rate.html"><img src="star.jpg"  height = "100" align= "left"></a> 
+    <p id = "star">Click the Star to Rate Us!</p>
     
     <h1 class="logo">
   <span class="word1">The</span>
@@ -7,7 +9,16 @@
 <p><a href="http://www.hacknightslc.com/"></a><a href="http://www.theleonardo.org/"></a> <small></small></p>
 
     <style>
+            #star {
+        color:#3D70C8;
+        font-family: sans-serif;
+        font-size: 20px;
+        position: absolute; 
+        left: 10%;
+        top: 30;
         
+    }
+
     
     body {
   background: #282828;/* match border color */
@@ -190,7 +201,7 @@ function showPage() {
     border-right-width: 10px;
     color:none; 
         position: absolute;
-        bottom: 25%;
+        top: 310;
         right: 40%;
 }
        #pic {
@@ -241,6 +252,8 @@ li a:hover {
   <li><a href="index.html">Home</a></li>
   <li><a href="part1.html">Post a Job</a></li>
   <li><a href="look.html">Find a Job</a></li>
+      <li><a href="profile.html">Make a Profile</a></li>
+
 </ul>    
     
 
@@ -325,7 +338,7 @@ li a:hover {
         
         // write user data
         function writeUserData(userId, name, email, imageUrl) {
-            firebase.database().ref('users/' + userId).set({
+            firebase.database().ref('users/' + userId).update({
                 username: name,
                 email: email,
                 profile_picture : imageUrl
@@ -363,6 +376,7 @@ li a:hover {
                         
                         
                     } 
+                    
                     mytab = mytab + "</tr>";
                 }   
             }
@@ -373,12 +387,24 @@ li a:hover {
             //mytdiv.innerHTML = mylist;
             mytdiv.innerHTML = mytab;
       
+            firebase.database().ref('/tweets/' + userId + "/-LfQJMeOy9cK4XD7dzc").once('value').then(function(snapshot) {
+        if (data.status == "liked") {
+                        document.getElementById('likes').style.backgroundColor = 'green'
+                document.getElementById('dislikes').style.backgroundColor = 'white'
+                    } else if (data.status == "disliked") {
+                        document.getElementById('dislikes').style.backgroundColor = 'red'
+                                document.getElementById('likes').style.backgroundColor = 'white'
+                    }
+        });
+            
         }
+        
+        
                       //LIKE CODE          
             var likes = document.getElementById("likes");
 
             function addlike() {
-                firebase.database().ref('/users/' + userId).update({status:"liked"});
+                firebase.database().ref('/tweets/' + userId + "/-LfQJMeOy9cK4XD7dzcq").update({status:"liked"});
                 document.getElementById('likes').style.backgroundColor = 'green'
                 document.getElementById('dislikes').style.backgroundColor = 'white'
 
@@ -388,13 +414,14 @@ li a:hover {
                   var dislikes = document.getElementById("dislikes");
 
             function adddislike() {
-                firebase.database().ref('/users/' + userId).update({status:"disliked"});
+                firebase.database().ref('/tweets/' + userId + "/-LfQJMeOy9cK4XD7dzcq").update({status:"disliked"});
                 document.getElementById('dislikes').style.backgroundColor = 'red'
                                 document.getElementById('likes').style.backgroundColor = 'white'
 
 
 
             }
+        
         
     
     
@@ -572,7 +599,140 @@ li a:hover {
     
 
     
-</html>
+<div id="inside"></div>
+    
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=ZCOOL+KuaiLe);
+body {
+  background-color: black;
+}
+
+/* <link href="https://fonts.googleapis.com/css?family=ZCOOL+KuaiLe" rel="stylesheet"> */
+
+#inside {
+  font-family: 'ZCOOL KuaiLe', cursive;
+/*   font-family: 'Dosis', sans-serif; */
+  color: rgb(252, 150, 65);
+  position: absolute;
+  z-index: 1;
+  height: 1.4em;
+  width: 3.8em;
+  overflow: show;
+  margin: auto;
+  top: 0;
+  left: 1300;
+  bottom: 600;
+  right: 1;
+
+  font-size: 2vw;
+  -webkit-text-stroke: 3px rgb(210, 65, 36);
+  text-shadow: 4px 4px 10px rgba(210, 65, 36, 0.4), 
+               4px 4px 20px rgba(210, 45, 26, 0.4), 
+               4px 4px 30px rgba(210, 25, 16, 0.4), 
+               4px 4px 40px rgba(210, 15, 06, 0.4);
+}
+    </style>
+     <h1 class="logo">
+
+</h1>
+<p><a href="http://www.hacknightslc.com/"></a><a href="http://www.theleonardo.org/"></a> <small></small></p>
+<script>
+    function clock() {
+  var now = new Date();
+  var secs = ('0' + now.getSeconds()).slice(-2);
+  var mins = ('0' + now.getMinutes()).slice(-2);
+  var hr = now.getHours();
+  var Time = hr + ":" + mins + ":" + secs;
+  document.getElementById("inside").innerHTML = Time;
+  requestAnimationFrame(clock);
+}
+
+requestAnimationFrame(clock);
+    </script>
+    <style>
+    
+    body {
+  background: #282828;/* match border color */
+  text-align: center;
+}
+a {
+  color: #dc006c;
+}
+small {
+  color: #333;
+}
+.logo {
+  font: 84px 'Arial Narrow', sans-serif;/* I picked this font because it's the closest looking 'web safe' font http://cssfontstack.com/ */
+  color: #fefefe;
+  text-transform: uppercase;
+  letter-spacing: -4px;
+}
+
+/* stuff for both words */
+.logo span {
+  position: relative;
+}
+.logo span:before,
+.logo span:after {
+  content: '';
+  position: absolute;
+  border-width: 32px;/* makes a nice, big 64px square */
+  border-style: solid;
+  border-color: transparent;
+  height: 0;
+  z-index: 10;
+}
+
+/* stuff for 1st word */
+.logo .word1 {
+  color: #dc006c;
+  margin-right: -38px;
+  transform: rotateY(180deg);/* using Prefix free */
+  display: inline-block;/* required for transform */
+  z-index: 10;/* stack 1st word on top */
+}
+.logo .word1:before {
+  right: -4px;/* would be left, but we flipped the word */
+  top: -9px;
+  border-top-color: #282828;/* match background color */
+  border-right-color: #282828;/* would be left, but we flipped the word */
+}
+.logo .word1:after {
+  left: 17px;/* would be right, but we flipped the word */
+  bottom: -15px;
+  border-bottom-color: #282828;
+  border-left-color: #282828;/* would be right, but we flipped the word */
+}
+
+/* stuff for 2nd word */
+.logo .word2 {
+  z-index: 0;/* stack 2nd word below */
+}
+.logo .word2:before {
+  left: -4px;
+  top: -6px;
+  border-top-color: #282828;
+  border-left-color: #282828;
+}
+.logo .word2:after {
+  right: -4px;  
+  bottom: 4px;
+  border-bottom-color: #282828;
+  border-right-color: #282828;
+}
+
+
+
+    <script src="https://www.gstatic.com/firebasejs/5.7.3/firebase.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+ <style>
+        tr:hover {background-color: #f5f5f5;}
+        th, td {
+            border-bottom: 1px solid #ddd;
+        }
+    
+    </style>
+
     
     
 
